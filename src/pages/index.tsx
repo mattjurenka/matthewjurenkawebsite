@@ -60,8 +60,8 @@ const Home = () => {
                         backgroundSize: "contain",
                         backgroundRepeat: "no-repeat",
                         zIndex: -1,
-                        width: window.innerWidth * 1/2,
-                        height: window.innerWidth * 1/2 * .335,
+                        width: "50vh",
+                        height: "16.75vh",
                         position: "relative",
                         top: "-3vh",
                         left: "5vw"
