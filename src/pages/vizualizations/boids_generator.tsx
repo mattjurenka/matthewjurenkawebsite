@@ -11,7 +11,6 @@ const max_height = 900
 
 var load = require('load-script')
 
-const audio_context = new AudioContext()
 
 
 const normalize_to = (x:number, max: number) => {
@@ -151,6 +150,8 @@ class Boids extends React.Component<BoidsProps, BoidsState> {
 
     async startVizualization(evt:React.ChangeEvent<HTMLInputElement>) {
         evt.preventDefault()
+        const audio_context = new AudioContext()
+
         const file = evt.target.files.item(0)
         const audio_array_buffer = await file.arrayBuffer()
         const audio_buffer = await audio_context.decodeAudioData(audio_array_buffer)
