@@ -54,51 +54,39 @@ const Home = () => {
                         <Experiences />
                     </Grid>
                 </Grid>
-                <Grid item container spacing={8}>
+                <Grid item container>
                     <Grid item xs={6} style={{
                         backgroundImage: "url(/mountains.png)",
                         backgroundSize: "contain",
                         backgroundRepeat: "no-repeat",
                         zIndex: -1,
-                        width: "50vh",
-                        height: "16.75vh",
+                        width: "calc(50vw)",
+                        height: "calc(50vw *.335)",
                         position: "relative",
                         top: "-3vh",
                         left: "5vw"
                     }} />
-                    <Grid item xs={6} spacing={8} style={{marginTop: "4em"}}>
-                        <Typography variant="h3">
-                            Featured Projects
-                        </Typography>
-                        <Link to="/ama_new_redesign">AMA Website Redesign 2020</Link>
-                        <br />
-                        <Link to="/ama_redesign">AMA Website Redesign 2019</Link>
-                        <br />
-                        <Typography variant="body1">More Coming Soon (Site in-progress)</Typography>
-                        {/*Typography variant="h4">
-                            Music Visualizations Generator
-                        </Typography>
-                        <Typography variant="h4">
-                            In Progress AMA Website
-                        </Typography>
-                        <Typography variant="h4">
-                            Reddit Scraper
-                        </Typography>
-                        <Typography variant="h4">
-                            PGM Editor
-                        </Typography>
-                        <Typography variant="h4">
-                            Stock Slack App
-                        </Typography>
-                        <Typography variant="h4">
-                            Julia Set Generator
-                        </Typography>
-                        <Typography variant="h4">
-                            MAYO Slack app
-                        </Typography>
-                        <Typography variant="h4">
-                            MAYO Funtions
-                        </Typography>*/}
+                    <Grid container item xs={6} style={{marginTop: "4em", paddingLeft:"32px"}}>
+                        <Grid item xs={8}>
+                            <Typography variant="h3">
+                                Featured Projects
+                            </Typography>
+                            {[
+                                ["Music Vizualizer", "/vizualizations/boids", "Automatically generate video of pulsing and moving triangles from an audio file."],
+                                ["AMA Website Redesign 2020", "/ama_new_redesign", "Design of ASU's American Marketing Association's website. Follows last year's redesign which led to a \
+                                100% increase in monthly views."],
+                                ["AMA Website Redesign 2019", "/ama_redesign", "Original Design of "],
+                            ].map(v => <>
+                                <div style={{marginTop: "1em"}}>
+                                    <Link to={v[1]}>
+                                        <Typography variant="h4" style={{background: "white"}}>
+                                            {v[0]}
+                                        </Typography>
+                                    </Link>
+                                    <Typography variant="body1">{v[2]}</Typography>
+                                </div>
+                            </>)}
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

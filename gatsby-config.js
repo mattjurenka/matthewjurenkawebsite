@@ -15,6 +15,6 @@ module.exports = {
           "Crimson Text"
         ],
       },
-    }
+    }, `gatsby-plugin-react-helmet`
   ],
 }

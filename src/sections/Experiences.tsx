@@ -18,7 +18,7 @@ const experiences_list: Experience[] = [
         to: "Current"
     },
     {
-        title: "ASU AMA",
+        title: "ASU American Marketing Association",
         description: "Re-designed our chapter website which led to an increase of monthly views by 100%",
         link: "https://www.amaasu.com/",
         from: "Mar 2020",

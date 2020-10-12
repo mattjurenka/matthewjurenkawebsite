@@ -45,8 +45,15 @@ const theme = createMuiTheme({
             fontFamily: crimson_text,
             fontSize: 16,
             color: "black"
-        }
+        },
     },
+    overrides: {
+        MuiButton: {
+            outlined: {
+                fontWeight: 600
+            }
+        }
+    }
 })
 
 export {
