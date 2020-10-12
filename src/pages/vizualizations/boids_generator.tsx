@@ -1,5 +1,4 @@
 import * as React from "react"
-import * as p5 from "p5"
 import { Button, Grid, ThemeProvider, Typography } from "@material-ui/core"
 import { guess } from 'web-audio-beat-detector';
 import download from "downloadjs";
@@ -278,7 +277,16 @@ class Boids extends React.Component<BoidsProps, BoidsState> {
                     res(script)
                 }
             }
-        ))
+        )).then(() => new Promise((res, reject) => load(
+            "https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js",
+            (err, script) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    res(script)
+                }
+            }
+        )))
     }
 
     static getDerivedStateFromError(error: any) {
