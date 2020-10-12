@@ -26,6 +26,7 @@
     "@types/react-helmet": "^6.1.0",
     "@types/react-numeric-input": "^2.2.3",
     "ccapture.js": "^1.1.0",
+    "cross-blob": "^2.0.0",
     "downloadjs": "^1.4.7",
     "ffmpeg.js": "^4.2.9003",
     "fs": "0.0.1-security",
