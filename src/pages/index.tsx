@@ -66,16 +66,28 @@ const Home = () => {
                         top: "-3vh",
                         left: "5vw"
                     }} />
-                    <Grid container item xs={6} style={{marginTop: "4em", paddingLeft:"32px"}}>
+                    <Grid container item xs={5} style={{marginTop: "4em", paddingLeft:"32px"}}>
                         <Grid item xs={8}>
                             <Typography variant="h3">
                                 Featured Projects
                             </Typography>
                             {[
-                                ["Music Vizualizer", "/vizualizations/boids", "Automatically generate video of pulsing and moving triangles from an audio file."],
-                                ["AMA Website Redesign 2020", "/ama_new_redesign", "Design of ASU's American Marketing Association's website. Follows last year's redesign which led to a \
-                                100% increase in monthly views."],
-                                ["AMA Website Redesign 2019", "/ama_redesign", "Original Design of "],
+                                [
+                                    "Music Vizualizers",
+                                    "/visualizations/",
+                                    "Collection of music visualizers that operate completely in the browser using technologies like P5, THREE, and CCapture."
+                                ],
+                                [
+                                    "AMA Website Redesign 2020",
+                                    "/ama_new_redesign",
+                                    "Design of ASU's American Marketing Association's website. Follows last year's redesign which led to a \
+                                    100% increase in monthly views."
+                                ],
+                                [
+                                    "AMA Website Redesign 2019",
+                                    "/ama_redesign",
+                                    "Original Reesign of ASU's American Marketing Association's website."
+                                ],
                             ].map(v => <>
                                 <div style={{marginTop: "1em"}}>
                                     <Link to={v[1]}>

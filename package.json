@@ -37,6 +37,7 @@
     "gatsby-plugin-react-helmet": "^3.3.12",
     "gatsby-query-params": "^1.2.1",
     "load-script": "^1.0.0",
+    "low-pass-filter": "^1.0.0",
     "p5": "^1.1.9",
     "react": "^16.12.0",
     "react-color": "^2.18.1",
@@ -44,6 +45,8 @@
     "react-helmet": "^6.1.0",
     "react-numeric-input": "^2.2.3",
     "react-script-tag": "^1.1.2",
+    "signaljs": "^1.0.1",
+    "three": "^0.121.1",
     "web-audio-beat-detector": "^8.0.28"
   },
   "devDependencies": {
