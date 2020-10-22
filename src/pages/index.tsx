@@ -73,7 +73,7 @@ const Home = () => {
                             </Typography>
                             {[
                                 [
-                                    "Music Vizualizers",
+                                    "Music Visualizers",
                                     "/visualizations/",
                                     "Collection of music visualizers that operate completely in the browser using technologies like P5, THREE, and CCapture."
                                 ],
@@ -86,7 +86,7 @@ const Home = () => {
                                 [
                                     "AMA Website Redesign 2019",
                                     "/ama_redesign",
-                                    "Original Reesign of ASU's American Marketing Association's website."
+                                    "Original Redesign of ASU's American Marketing Association's website."
                                 ],
                             ].map(v => <>
                                 <div style={{marginTop: "1em"}}>
