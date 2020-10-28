@@ -1,9 +1,7 @@
-import { Grid, ThemeProvider, Typography } from "@material-ui/core";
-import zIndex from "@material-ui/core/styles/zIndex";
-import { KeyboardBackspaceOutlined } from "@material-ui/icons";
+import { capitalize, Grid, ThemeProvider, Typography } from "@material-ui/core";
 import { Link } from "gatsby";
 import React from "react";
-import theme from "../../theme";
+import Metadata from "../../components/metadata";
 
 const vizualisers: Array<[string, string, string]> = [
     [
@@ -18,7 +16,10 @@ const vizualisers: Array<[string, string, string]> = [
     ],
 ]
 
-const home = () => <ThemeProvider theme={theme}>
+const home = () => <Metadata
+    title={`Music Visualizers | M Jurenka`}
+    description={`Create 100% FREE music visualizations with our Boids and Spinning visualizers. Perfect for creating Instagram videos of your favorite music.`}
+>
     <Grid
         container
         spacing={8}
@@ -79,7 +80,6 @@ const home = () => <ThemeProvider theme={theme}>
             </Grid>)
         }
     </Grid>
-</ThemeProvider>
-
+</Metadata>
 
 export default home

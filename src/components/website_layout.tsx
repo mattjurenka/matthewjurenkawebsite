@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Grid, Link, ThemeProvider, Typography } from "@material-ui/core";
 import theme from "../theme";
+import Metadata from "./metadata";
 
 interface website_layout_props {
     title: string,
@@ -12,7 +13,10 @@ interface website_layout_props {
 }
 
 const WebsiteLayout = (props: website_layout_props) => {
-    return <ThemeProvider theme={theme}>
+    return <Metadata
+        title={`props.title | M Jurenka`}
+        description={props.description}
+    >
         <Grid container >
             <Grid container item style={{margin: "2em 2em"}}>
                 <Grid item xs={8}>
@@ -52,7 +56,7 @@ const WebsiteLayout = (props: website_layout_props) => {
                 />
             </Grid>
         </Grid>
-    </ThemeProvider>
+    </Metadata>
 }
 
 export default WebsiteLayout;

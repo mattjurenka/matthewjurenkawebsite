@@ -4,9 +4,15 @@ import theme, { pointer_style } from "../theme"
 import Experiences from "../sections/Experiences"
 import { LinkedIn, GitHub, Email } from "@material-ui/icons"
 import { Link } from "gatsby"
+import Metadata from "../components/metadata"
 
 const Home = () => {
-    return <ThemeProvider theme={theme}>
+    return <Metadata
+        title={"Home | Matthew Jurenka"}
+        description={"For as long as I can remember, I have been voraciously curious about computers, \
+            programming, and the internet. Tinkering with online creation naturally led me \
+            to the world of web development, and I have been building, breaking, and exploring ever since."}
+    >
         <Grid
             container
             style={{
@@ -103,7 +109,7 @@ const Home = () => {
                 </Grid>
             </Grid>
         </Grid>
-    </ThemeProvider>
+    </Metadata>
 }
 
 export default Home

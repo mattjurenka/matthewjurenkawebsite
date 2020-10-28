@@ -1,10 +1,11 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from "react"
 import { useQueryParam } from "gatsby-query-params";
-import { Button, Grid, ThemeProvider, Typography } from "@material-ui/core";
+import { Button, capitalize, Grid, ThemeProvider, Typography } from "@material-ui/core";
 import download from "downloadjs";
 import { useUpdateEffect } from "../hooks";
 import theme from "../theme";
 import vizualizations_dict from "../vizualization_params";
+import Metadata from "./metadata";
 
 const load = require('load-script')
 
@@ -37,13 +38,16 @@ const VizualizerGenerator = (props: {
         return acc
     }, {} as query_params)
 
-    return <ThemeProvider theme={theme}>
+    return <Metadata
+        title={`${capitalize(name)} | M Jurenka`}
+        description={`Create 100% FREE music visualizations with our ${capitalize(name)} visualizer. Perfect for creating Instagram videos of your favorite music.`}
+    >
         <VizualizerRenderer
             query_params={query_params}
             script_cdns={script_cdns}
             start_rendering={start_rendering}
         />
-    </ThemeProvider>
+    </Metadata>
 }
 
 type ui_state = "upload" | "rendering" | "done" | "error"
