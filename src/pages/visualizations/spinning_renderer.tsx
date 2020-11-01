@@ -47,8 +47,9 @@ const SpinningRenderer = () => {
         name="spinning"
         script_cdns={[
             "https://rawgit.com/spite/ccapture.js/master/build/CCapture.all.min.js",
+            "/dependencies/pitch.js"
         ]}
-        start_rendering={(param_dict, set_ui_state, set_video_blob, mount, audio_buffer, audio_context) => {
+        start_rendering={(param_dict, set_ui_state, set_video_blob, mount, audio_buffer, audio_context, init_timestamp) => {
             const width = param_dict.width as number
             const height = param_dict.height as number
             const duration = param_dict.duration as number
@@ -57,17 +58,21 @@ const SpinningRenderer = () => {
             const colortwo = Number.parseInt(param_dict.colortwo as string, 16)
             const background = Number.parseInt(param_dict.background as string, 16)
             const cutoff = param_dict.cutoff as number
+            const is_realtime = (param_dict.is_realtime === "Yes") as boolean
+            console.log(is_realtime)
 
             const sampleRate = audio_buffer.sampleRate
             const channel_zero = audio_buffer.getChannelData(0)
 
             lowPassFilter(channel_zero, cutoff, sampleRate, 1)
-            const capturer = new CCapture({
-                display: true,
-                framerate,
-                format: "webm",
-                name: "boids"
-            })
+            const capturer = !is_realtime ?
+                new CCapture({
+                    display: true,
+                    framerate,
+                    format: "webm",
+                    name: "boids"
+                }) :
+                null
     
             const scene = new Scene();
             const camera = new PerspectiveCamera(75, width/height, 0.1, 1000);
@@ -121,22 +126,33 @@ const SpinningRenderer = () => {
                     expands
                 }
             })
-
-            const get_rms = get_rms_function(channel_zero)
-            capturer.start();
             
-            let time_in_ms = 0
-            const animate = () => {
-                requestAnimationFrame(animate)
-                
-                const time_in_seconds = time_in_ms / 1000
+            const get_rms = get_rms_function(channel_zero)
+            if (!is_realtime) {
+                capturer.start();
+            }
+            
+            let start = null
 
-                if (time_in_ms / 1000 > duration) {
+            const epoch = Date.now()
+            let time_in_ms = 0
+            const animate = (real_time_in_ms: number) => {
+                
+                if (start === null) {
+                    start = real_time_in_ms
+                }
+                
+                const time_in_seconds = is_realtime ?
+                    (real_time_in_ms - start) / 1000:
+                    time_in_ms / 1000
+                
+                console.log(time_in_seconds)
+                if (!is_realtime && time_in_ms > duration) {
                     capturer.stop()
                     capturer.save(set_video_blob)
-                    return
+                    return 
                 }
-
+            
                 const currentFrame = Math.floor(sampleRate * time_in_seconds)
                 const bump = Math.log10(get_rms(currentFrame - 2500, currentFrame + 2500) / 20) + 3
                 
@@ -156,13 +172,25 @@ const SpinningRenderer = () => {
                     }
                 })
 
+                if (!is_realtime) {
+                    capturer.capture(renderer.domElement)
+                }
                 renderer.render(scene, camera)
-                capturer.capture(renderer.domElement)
 
                 time_in_ms += 1000 / framerate
+                requestAnimationFrame(animate)
             }
 
-            animate()
+            if (is_realtime) {
+                const source = audio_context.createBufferSource()
+                source.buffer = audio_buffer
+                source.connect(audio_context.destination)
+                source.start()
+            }
+
+            requestAnimationFrame(() => {
+                animate(performance.now())
+            })
         }}
     />
 }

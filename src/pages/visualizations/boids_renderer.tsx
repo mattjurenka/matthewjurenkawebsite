@@ -48,7 +48,7 @@ const BoidsRenderer = () => {
             "https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js",
             "https://rawgit.com/spite/ccapture.js/master/build/CCapture.all.min.js"
         ]}
-        start_rendering={(param_dict, set_ui_state, set_video_blob, mount, audio_buffer) => {
+        start_rendering={(param_dict, set_ui_state, set_video_blob, mount, audio_buffer, audio_context) => {
             const framerate = param_dict.framerate as number
             const width = param_dict.width as number
             const height = param_dict.height as number
@@ -56,20 +56,24 @@ const BoidsRenderer = () => {
             const background = `#${param_dict.background}` as string
             const numboids = param_dict.numboids as number
             const duration = param_dict.duration as number
+            const is_realtime = param_dict.is_realtime === "Yes"
             
-            const capturer = new CCapture({
-                display: true,
-                format: "webm",
-                framerate,
-                name: "boids"
-            })
+            const capturer = !is_realtime ? 
+                new CCapture({
+                    display: true,
+                    format: "webm",
+                    framerate,
+                    name: "boids"
+                }) : null
             
+
             guess(audio_buffer).then(({ bpm, offset }) => {
-                //P5.js loaded via 
+                //P5.js loaded via load_js
                 new p5((p: any) => {
                     let canvas:any = null
                     let boids: Boid[] = []
                     let downloaded = false
+                    const start = Date.now()
     
                     p.setup = () => {
                         canvas = p.createCanvas(width, height, p.P2D)
@@ -84,22 +88,36 @@ const BoidsRenderer = () => {
                                 rotation: Math.random() * 2 * Math.PI
                             }
                         })
+                        boids.map(boid => {
+                            const points = get_triangle_points(boid, 14)
+                            p.triangle(
+                                points[0][0], points[0][1],
+                                points[1][0], points[1][1],
+                                points[2][0], points[2][1],
+                            )
+                        })
+
+                        if (is_realtime) {
+                            const source = audio_context.createBufferSource()
+                            source.buffer = audio_buffer
+                            source.connect(audio_context.destination)
+                            source.start()
+                        }
                     }
     
                     p.draw = () => {
                         p.background(background)
                         
-                        const elapsed_time = p.frameCount / framerate
+                        const real_elapsed = (Date.now() - start) / 1000
                         const time_diff = 1 / framerate
-                        const speed = 140 + 300 * Math.sin(bpm/60*Math.PI * elapsed_time)**6
-                        const radius = 14 + 10 * Math.sin(bpm/120*Math.PI * elapsed_time + Math.PI/4)**16
+                        const speed = 140 + 300 * Math.sin(bpm/60*Math.PI * real_elapsed)**6
+                        const radius = 14 + 10 * Math.sin(bpm/120*Math.PI * real_elapsed + Math.PI/4)**16
                         const dist_diff = speed * time_diff
                         
-                        if (elapsed_time >= duration) {
+                        if (!is_realtime && real_elapsed >= duration) {
                             p.noLoop()
                             if (!downloaded) {
                                 downloaded = true
-    
                                 capturer.stop()
                                 capturer.save(set_video_blob)
                             }
@@ -156,8 +174,10 @@ const BoidsRenderer = () => {
                             )
                         })
                         
-                        p.frameCount === 1 && capturer.start()
-                        capturer.capture(canvas.canvas)
+                        if (!is_realtime) {
+                            capturer.capture(canvas.canvas)
+                            p.frameCount === 1 && capturer.start()
+                        }
                     }
                 }, mount.current)
             })

@@ -1,18 +1,16 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from "react"
 import { useQueryParam } from "gatsby-query-params";
-import { Button, capitalize, Grid, ThemeProvider, Typography } from "@material-ui/core";
+import { Button, capitalize, Grid, Typography } from "@material-ui/core";
 import download from "downloadjs";
 import { useUpdateEffect } from "../hooks";
-import theme from "../theme";
 import vizualizations_dict from "../vizualization_params";
 import Metadata from "./metadata";
 
 const load = require('load-script')
 
-const help_text = "Make sure you are using a modern browser that supports the Web Audio API. Make sure the supplied audio file is in a common audio format. \
-This APP is tested to work with the MPEG 3 and WAVE codecs in Chrome. \
-If you continue to have problems and really want to use this application shoot me an email at main@matthewjurenka.com"
-
+const help_text = "Make sure you are using a modern browser that supports the Web Audio API. Make sure the supplied audio file is in a common audio format. "
++ "This APP is tested to work with the MPEG 3 and WAVE codecs in Chrome."
++ "If you continue to have problems and really want to use this application shoot me an email at main@matthewjurenka.com"
 
 const VizualizerGenerator = (props: {
     name: string
@@ -23,20 +21,23 @@ const VizualizerGenerator = (props: {
         set_video_blob: (video_blob: Blob) => void,
         mount: React.MutableRefObject<HTMLDivElement>,
         audio_buffer: AudioBuffer,
-        audio_context: AudioContext
+        audio_context: AudioContext,
+        init_timestamp: number
     ) => void
 }) => {
     const { script_cdns, start_rendering, name } = props
 
-    const query_params = vizualizations_dict[name].reduce((acc, param_info) => {
-        acc[param_info.name] = param_info.type === "range" ?
-            (parsed_raw => Number.isNaN(parsed_raw) ?
-                param_info.default :
-                parsed_raw)
-                (Number.parseInt(useQueryParam(param_info.name, param_info.default))) :
-            useQueryParam(param_info.name, param_info.default)
-        return acc
-    }, {} as query_params)
+    const query_params = vizualizations_dict.specific[name]
+        .concat(vizualizations_dict.all)
+        .reduce((acc, param_info) => {
+            acc[param_info.name] = param_info.type === "range" ?
+                (parsed_raw => Number.isNaN(parsed_raw) ?
+                    param_info.default :
+                    parsed_raw)
+                    (Number.parseInt(useQueryParam(param_info.name, param_info.default))) :
+                useQueryParam(param_info.name, param_info.default)
+            return acc
+        }, {} as query_params)
 
     return <Metadata
         title={`${capitalize(name)} | M Jurenka`}
@@ -61,7 +62,8 @@ const VizualizerRenderer: FunctionComponent<{
         set_video_blob: (video_blob: Blob) => void,
         mount: React.MutableRefObject<HTMLDivElement>,
         audio_buffer: AudioBuffer,
-        audio_context: AudioContext
+        audio_context: AudioContext,
+        init_timestamp: number
     ) => void
 }> = (props) => {
     const [loaded, set_loaded] = useState(false)
@@ -110,7 +112,8 @@ const VizualizerRenderer: FunctionComponent<{
                     set_video_blob,
                     render_ref,
                     audio_buffer,
-                    audio_context
+                    audio_context,
+                    Date.now()
                 ))
             })
         }

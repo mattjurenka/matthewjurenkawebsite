@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, capitalize, Grid, ThemeProvider, Typography } from "@material-ui/core";
+import { Box, Button, capitalize, Grid, MenuItem, Select, ThemeProvider, Typography } from "@material-ui/core";
 import theme from "../theme";
 
 import { ChromePicker } from "react-color"
@@ -8,6 +8,8 @@ import { Link as ExternalLink } from "@material-ui/core"
 import NumericInput from "react-numeric-input"
 import vizualizations_dict from "../vizualization_params";
 import Metadata from "./metadata";
+
+
 
 const VizualizerController = (props: {
     name: string,
@@ -19,7 +21,7 @@ const VizualizerController = (props: {
         video_url: string
     }
 }) => {
-    const [param_list] = useState(vizualizations_dict[props.name])
+    const [param_list] = useState(vizualizations_dict.specific[props.name].concat(vizualizations_dict.all))
     const [params, set_params] = useState(param_list.reduce((acc, param_info) => {
         acc[param_info.name] = param_info.default
         return acc
@@ -115,30 +117,61 @@ const VizualizerController = (props: {
                                             />
                                         </div>
                                     ] :
-                                    [
-                                        <Typography
-                                            key="1"
-                                            variant="h2"
-                                            style={{
-                                                marginBottom: "0.5em"
-                                            }}
-                                        >
-                                            {param_info.title}
-                                        </Typography>,
-                                        <NumericInput
-                                            key="2"
-                                            min={param_info.range[0]}
-                                            max={param_info.range[1]}
-                                            value={params[param_info.name]}
-                                            onChange={value => set_params(params => {
-                                                params[param_info.name] = value
-                                                return {
-                                                    ...params
-                                                }
-                                            })}
-                                        />,
-                                        <div key="3" style={{marginTop: "2em"}} />,
-                                    ]
+                                    param_info.type === "range" ?
+                                        [
+                                            <Typography
+                                                key="1"
+                                                variant="h2"
+                                                style={{
+                                                    marginBottom: "0.5em"
+                                                }}
+                                            >
+                                                {param_info.title}
+                                            </Typography>,
+                                            <NumericInput
+                                                key="2"
+                                                min={param_info.range[0]}
+                                                max={param_info.range[1]}
+                                                value={params[param_info.name]}
+                                                onChange={value => set_params(params => {
+                                                    params[param_info.name] = value
+                                                    return {
+                                                        ...params
+                                                    }
+                                                })}
+                                            />,
+                                            <div key="3" style={{marginTop: "2em"}} />,
+                                        ] : 
+                                        [
+                                            <Typography
+                                                key="1"
+                                                variant="h2"
+                                                style={{
+                                                    marginBottom: "0.5em"
+                                                }}
+                                            >
+                                                {param_info.title}
+                                            </Typography>,
+                                            <Select
+                                                key="2"
+                                                value={params[param_info.name] as String}
+                                                onChange={evt => set_params(params => {
+                                                    params[param_info.name] = evt.target.value as string
+                                                    return {
+                                                        ...params
+                                                    }
+                                                })}
+                                                style={{
+                                                    marginBottom: "2em"
+                                                }}
+                                            >
+                                                {param_info.options.map(option => <MenuItem
+                                                    value={option}
+                                                >
+                                                    <Typography variant="subtitle1">{option}</Typography>
+                                                </MenuItem>)}
+                                            </Select>
+                                        ]
                                 )}
                             </Grid>)
                         }

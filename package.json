@@ -47,6 +47,7 @@
     "react-script-tag": "^1.1.2",
     "signaljs": "^1.0.1",
     "three": "^0.121.1",
+    "tone": "^14.7.58",
     "web-audio-beat-detector": "^8.0.28"
   },
   "devDependencies": {
