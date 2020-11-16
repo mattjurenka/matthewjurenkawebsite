@@ -27,8 +27,8 @@ const VizualizerGenerator = (props: {
 }) => {
     const { script_cdns, start_rendering, name } = props
 
-    const query_params = vizualizations_dict.specific[name]
-        .concat(vizualizations_dict.all)
+    const query_params = vizualizations_dict.specific[name].url_params
+        .concat(vizualizations_dict.default_params)
         .reduce((acc, param_info) => {
             acc[param_info.name] = param_info.type === "range" ?
                 (parsed_raw => Number.isNaN(parsed_raw) ?

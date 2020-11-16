@@ -62,7 +62,7 @@ const SpinningRenderer = () => {
             console.log(is_realtime)
 
             const sampleRate = audio_buffer.sampleRate
-            const channel_zero = audio_buffer.getChannelData(0)
+            const channel_zero = Float32Array.from(audio_buffer.getChannelData(0))
 
             lowPassFilter(channel_zero, cutoff, sampleRate, 1)
             const capturer = !is_realtime ?

@@ -4,6 +4,7 @@ import theme, { pointer_style } from "../theme"
 import Experiences from "../sections/Experiences"
 import { LinkedIn, GitHub, Email } from "@material-ui/icons"
 import { Link } from "gatsby"
+import {Link as ExternalLink} from "@material-ui/core"
 import Metadata from "../components/metadata"
 
 const Home = () => {
@@ -81,7 +82,8 @@ const Home = () => {
                                 [
                                     "Music Visualizers",
                                     "/visualizations/",
-                                    "Collection of music visualizers that operate completely in the browser using technologies like P5, THREE, and CCapture."
+                                    "Collection of music visualizers that operate completely in the browser using technologies like P5, THREE, and CCapture.",
+                                    "https://github.com/mattjurenka/matthewjurenkawebsite/tree/master/src/pages/visualizations"
                                 ],
                                 [
                                     "AMA Website Redesign 2020",
@@ -96,11 +98,24 @@ const Home = () => {
                                 ],
                             ].map(v => <>
                                 <div style={{marginTop: "1em"}}>
-                                    <Link to={v[1]}>
-                                        <Typography variant="h4" style={{background: "white"}}>
-                                            {v[0]}
-                                        </Typography>
-                                    </Link>
+                                    <Box display="flex" flexDirection="row">
+                                        <Box>
+                                            <Link to={v[1]}>
+                                                <Typography variant="h4" style={{background: "white"}}>
+                                                    {v[0]}
+                                                </Typography>
+                                            </Link>
+                                        </Box>
+                                            {
+                                                v[3] !== undefined ?
+                                                    <Box style={{marginLeft: "1em"}}>
+                                                        <ExternalLink variant="subtitle1" href={v[3]} style={{textDecoration: "underline"}}>
+                                                            Source Code
+                                                        </ExternalLink>
+                                                    </Box> :
+                                                    <></>
+                                            }
+                                    </Box>
                                     <Typography variant="body1">{v[2]}</Typography>
                                 </div>
                             </>)}

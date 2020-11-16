@@ -14,14 +14,9 @@ import Metadata from "./metadata";
 const VizualizerController = (props: {
     name: string,
     title: string
-    example: {
-        artist_url: string,
-        artist: string,
-        song: string,
-        video_url: string
-    }
 }) => {
-    const [param_list] = useState(vizualizations_dict.specific[props.name].concat(vizualizations_dict.all))
+    const [example] = useState(vizualizations_dict.specific[props.name].example)
+    const [param_list] = useState(vizualizations_dict.specific[props.name].url_params.concat(vizualizations_dict.default_params))
     const [params, set_params] = useState(param_list.reduce((acc, param_info) => {
         acc[param_info.name] = param_info.default
         return acc
@@ -48,7 +43,7 @@ const VizualizerController = (props: {
                             maxWidth: "100%",
                             marginBottom: "1em"
                         }}
-                        src={props.example.video_url}
+                        src={`/visualizer_examples/${props.name}.mp4`}
                         controls
                     />
                     <br />
@@ -56,9 +51,9 @@ const VizualizerController = (props: {
                         variant="h4"
                         color="inherit"
                         underline="always"
-                        href={props.example.artist_url}
+                        href={example.artist_url}
                         target="_blank"
-                    >{props.example.artist} — {props.example.song}</ExternalLink>
+                    >{example.artist} — {example.song}</ExternalLink>
                 </Grid>
                 <Grid item container xs={7} spacing={2} style={{paddingLeft: "3em", paddingRight: "3em"}}>
                     <Grid item xs={12}>
@@ -68,7 +63,7 @@ const VizualizerController = (props: {
                         <Grid item xs={4}>
                             <Typography variant="h1" style={{marginBottom: "0.5em"}}>Step 1</Typography>
                             <Typography variant="body1">
-                                Adjust the vizualizer settings below. The video on the left is an example of the default settings.
+                                Adjust the vizualizer settings below. The video on the left is an example of the default settings. <b>Make sure Realtime is set to No if you want to download a video.</b>
                             </Typography>
                         </Grid>
                         <Grid item xs={4}>

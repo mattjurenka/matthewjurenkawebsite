@@ -110,8 +110,8 @@ const BoidsRenderer = () => {
                         
                         const real_elapsed = (Date.now() - start) / 1000
                         const time_diff = 1 / framerate
-                        const speed = 140 + 300 * Math.sin(bpm/60*Math.PI * real_elapsed)**6
-                        const radius = 14 + 10 * Math.sin(bpm/120*Math.PI * real_elapsed + Math.PI/4)**16
+                        const speed = 140 + 300 * Math.sin(bpm/60*Math.PI * (real_elapsed - offset))**6
+                        const radius = 14 + 10 * Math.sin(bpm/120*Math.PI * (real_elapsed - offset) + Math.PI/4)**16
                         const dist_diff = speed * time_diff
                         
                         if (!is_realtime && real_elapsed >= duration) {
@@ -174,9 +174,10 @@ const BoidsRenderer = () => {
                             )
                         })
                         
+                        
                         if (!is_realtime) {
-                            capturer.capture(canvas.canvas)
                             p.frameCount === 1 && capturer.start()
+                            capturer.capture(canvas.canvas)
                         }
                     }
                 }, mount.current)

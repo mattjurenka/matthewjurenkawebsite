@@ -2,19 +2,7 @@ import { capitalize, Grid, ThemeProvider, Typography } from "@material-ui/core";
 import { Link } from "gatsby";
 import React from "react";
 import Metadata from "../../components/metadata";
-
-const vizualisers: Array<[string, string, string]> = [
-    [
-        "/metu_viz.mp4",
-        "Boids",
-        "./boids"
-    ],
-    [
-        "/boundaries_viz.mp4",
-        "Spinning",
-        "./spinning"
-    ],
-]
+import vizualizations_dict from "../../vizualization_params";
 
 const home = () => <Metadata
     title={`Music Visualizers | M Jurenka`}
@@ -38,12 +26,15 @@ const home = () => <Metadata
             </Link>
         </Grid>
         {
-            vizualisers.map((vizualiser, idx) => <Grid
+            Object.entries(vizualizations_dict.specific)
+                .sort((a, b)=> a[1].order - b[1].order)
+                .map(([name, params], idx) =>
+            <Grid
                 item
                 xs={6}
                 md={3}
             >
-                <Link to={vizualiser[2]}>
+                <Link to={`./${name}`}>
                     <Grid
                         container
                         style={{
@@ -53,7 +44,7 @@ const home = () => <Metadata
                         }}
                     >
                         <video
-                            src={vizualiser[0]}
+                            src={`/visualizer_examples/${name}.mp4`}
                             style={{
                                 maxWidth: "100%",
                                 position: "absolute"
@@ -71,7 +62,7 @@ const home = () => <Metadata
                         }}>
                             <Typography variant="h1" style={{
                                 color: "white"
-                            }}>{vizualiser[1]}</Typography>
+                            }}>{capitalize(name)}</Typography>
                         </div>
 
                     </Grid>
