@@ -10,9 +10,9 @@ import Metadata from "../components/metadata"
 const Home = () => {
     return <Metadata
         title={"Home | Matthew Jurenka"}
-        description={"For as long as I can remember, I have been voraciously curious about computers, \
-            programming, and the internet. Tinkering with online creation naturally led me \
-            to the world of web development, and I have been building, breaking, and exploring ever since."}
+        description={"I love software engineering because it is hard. There are an infinite number of ways to approach a problem \
+            and an infinite number of ways you can shoot yourself in the foot. The reason I wake up in the morning is to find new ways \
+            to manage that complexity and discover new solutions no-one has thought of before."}
     >
         <Grid
             container
