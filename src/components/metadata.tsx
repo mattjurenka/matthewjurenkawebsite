@@ -25,7 +25,6 @@ const Metadata = (props: {
             gtag('js', new Date());\
             gtag('config', 'UA-181063669-1');"}
         </script>
-
     </Helmet>
     {props.children}
 </ThemeProvider>

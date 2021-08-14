@@ -5,10 +5,6 @@ const josephine_sans = "'Josefin Sans', sans-serif"
 const crimson_text = "'Crimson Text', sans-serif"
 const navy_blue = "#00008B"
 
-const pointer_style: React.CSSProperties = {
-    cursor: "pointer"
-}
-
 const theme = createMuiTheme({
     typography: {
         h1: {
@@ -56,7 +52,4 @@ const theme = createMuiTheme({
     }
 })
 
-export {
-    pointer_style
-}
 export default theme
