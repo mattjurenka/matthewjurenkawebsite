@@ -1,4 +1,4 @@
-type param_info = ({
+export type param_info = ({
     type: "color",
     default: string
 } | {
@@ -153,7 +153,8 @@ const vizualizations_dict: {
             ],
             example: {
                 artist: "Kapote",
-                artist_url: "https://open.spotify.com/artist/3sySIHNL0hqR7eOlm3LNTH?si=d4tujuD0RSid8eKZ8xfqpQ",
+                artist_url: "https://open.spotify.com/artist/"
+                    + "3sySIHNL0hqR7eOlm3LNTH?si=d4tujuD0RSid8eKZ8xfqpQ",
                 song: "Get Down Brother 2020",
             },
             order: 1

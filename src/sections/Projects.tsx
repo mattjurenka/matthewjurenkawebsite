@@ -12,14 +12,17 @@ export default () => <>
         [
             "Music Visualizers",
             "/visualizations/",
-            "Collection of music visualizers that operate completely in the browser using technologies like P5, THREE, and CCapture.",
-            "https://github.com/mattjurenka/matthewjurenkawebsite/tree/master/src/pages/visualizations"
+            "Collection of music visualizers that operate completely in the \
+                browser using technologies like P5, THREE, and CCapture.",
+            "https://github.com/mattjurenka/matthewjurenkawebsite/tree/master/"
+                + "src/pages/visualizations"
         ],
         [
             "AMA Website Redesign 2020",
             "/ama_new_redesign",
-            "Design of ASU's American Marketing Association's website. Follows last year's redesign which led to a \
-            100% increase in monthly views."
+            "Design of ASU's American Marketing Association's website. \
+                Follows last year's redesign which led to a 100% increase \
+                in monthly views."
         ],
         [
             "AMA Website Redesign 2019",

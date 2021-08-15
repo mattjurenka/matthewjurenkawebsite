@@ -9,7 +9,7 @@ import {Header} from "../sections/Header"
 import Projects from "../sections/Projects"
 
 
-const Home = () => {
+export default () => {
     const is_large = useMediaQuery(theme.breakpoints.up("sm"))
 
     return <Metadata
@@ -23,7 +23,8 @@ const Home = () => {
                 margin: "0 auto",
                 paddingTop: is_large ? "16vh" : "8vh",
                 paddingLeft: is_large ? "20%" : 0,
-                paddingRight: is_large ? "20%" : 0
+                paddingRight: is_large ? "20%" : 0,
+                overflow: "hidden",
             }}
             spacing={8}
         >
@@ -54,5 +55,3 @@ const Home = () => {
         </Grid>
     </Metadata>
 }
-
-export default Home

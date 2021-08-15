@@ -1,3 +1,3 @@
-type query_params = {
+export type query_params = {
     [name: string]: string | number
 }

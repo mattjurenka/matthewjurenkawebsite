@@ -37,7 +37,7 @@ const experiences_list: Experience[] = [
     },
 ]
 
-const Experiences = () => {
+export default () => {
     return <>
         <Typography variant="h3">Experiences</Typography>
         <div style={{marginBottom: "2vh"}} />
@@ -62,5 +62,3 @@ const Experiences = () => {
         </div>)}
     </>
 }
-
-export default Experiences
