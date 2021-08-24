@@ -22,7 +22,7 @@ const experiences_list: Experience[] = [
     {
         title: "ASU American Marketing Association",
         description: "Re-designed our chapter website which led to an increase \
-            of monthly views by 100%",
+            of monthly views by 100%.",
         link: "https://www.amaasu.com/",
         from: "Mar 2020",
         to: "Current"
@@ -41,7 +41,9 @@ export default () => {
     return <>
         <Typography variant="h3">Experiences</Typography>
         <div style={{marginBottom: "2vh"}} />
-        {experiences_list.map(experience => <div style={{marginTop: "2vh"}}>
+        {experiences_list.map((experience, idx) => <div
+            key={idx} style={{marginTop: "2vh"}}
+        >
             <Box display="flex">
                 <Link
                     href={experience.link}

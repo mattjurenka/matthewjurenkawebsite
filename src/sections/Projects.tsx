@@ -1,38 +1,23 @@
 import React from "react"
 
-import {Typography, Box } from "@material-ui/core"
+import {Typography, Box, Chip } from "@material-ui/core"
 import {Link} from "gatsby"
 import {Link as ExternalLink} from "@material-ui/core"
+import {Project} from ".."
 
-export default () => <>
+interface ProjectsProps {
+    title: string
+    projects: Project[]
+}
+
+export default ({title, projects}: ProjectsProps) => <>
     <Typography variant="h3">
-        Featured Projects
+        {title}
     </Typography>
-    {([
-        [
-            "Music Visualizers",
-            "/visualizations/",
-            "Collection of music visualizers that operate completely in the \
-                browser using technologies like P5, THREE, and CCapture.",
-            "https://github.com/mattjurenka/matthewjurenkawebsite/tree/master/"
-                + "src/pages/visualizations"
-        ],
-        [
-            "AMA Website Redesign 2020",
-            "/ama_new_redesign",
-            "Design of ASU's American Marketing Association's website. \
-                Follows last year's redesign which led to a 100% increase \
-                in monthly views."
-        ],
-        [
-            "AMA Website Redesign 2019",
-            "/ama_redesign",
-            "Original Redesign of ASU's American Marketing Association's website."
-        ],
-    ] as [string, string, string, string | undefined][]).map(
-        ([title, link, description, href]) => <>
+    {projects.map(
+        ([title, link, description, technologies, href]) => <>
         <div style={{marginTop: "1em"}}>
-            <Box display="flex" flexDirection="row">
+            <Box display="flex" flexDirection="row" flexWrap="wrap">
                 <Box>
                     <Link to={link}>
                         <Typography
@@ -60,6 +45,12 @@ export default () => <>
             <Typography variant="body1" style={{background: "white"}}>
                 {description}
             </Typography>
+            <Box display="flex" flexDirection="row" flexWrap="wrap">
+                {technologies.map(tech => <Chip
+                    label={tech}
+                    style={{marginRight: ".5em", marginTop: ".5em"}}
+                />)}
+            </Box>
         </div>
     </>)}
 </>

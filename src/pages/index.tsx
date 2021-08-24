@@ -3,14 +3,15 @@ import { Grid, Typography, useMediaQuery } from "@material-ui/core"
 import Experiences from "../sections/Experiences"
 import Metadata from "../components/metadata"
 
-import { intent, intro } from "../text"
+import { featured_projects, intent, intro, more_projects } from "../text"
 import theme from "../theme"
 import {Header} from "../sections/Header"
 import Projects from "../sections/Projects"
 
 
 export default () => {
-    const is_large = useMediaQuery(theme.breakpoints.up("sm"))
+    const is_md = useMediaQuery(theme.breakpoints.up("sm"))
+    const is_lg = useMediaQuery(theme.breakpoints.up("md"))
 
     return <Metadata
         title={"Home | Matthew Jurenka"}
@@ -21,9 +22,9 @@ export default () => {
             style={{
                 width: "100%",
                 margin: "0 auto",
-                paddingTop: is_large ? "16vh" : "8vh",
-                paddingLeft: is_large ? "20%" : 0,
-                paddingRight: is_large ? "20%" : 0,
+                paddingTop: is_md ? "16vh" : "8vh",
+                paddingLeft: is_md ? "20%" : 0,
+                paddingRight: is_md ? "20%" : 0,
                 overflow: "hidden",
             }}
             spacing={8}
@@ -42,7 +43,7 @@ export default () => {
             <Grid item xs={12} md={6}>
                 <Experiences />
             </Grid>
-            <Grid item xs={6} style={{position: "relative"}}> 
+            <Grid item xs={6} style={{position: "relative", zIndex: -1}}> 
                 <img src={"/mountains.png"} style={{
                     position: "absolute",
                     zIndex: -1,
@@ -50,7 +51,16 @@ export default () => {
                 }}/>
             </Grid>
             <Grid item xs={12} md={6}>
-                <Projects />
+                <Projects
+                    title="Featured Projects"
+                    projects={featured_projects}
+                />
+            </Grid>
+            <Grid item xs={12} md={6} style={{marginTop: is_lg ? "-32em" : "initial"}}>
+                <Projects
+                    title="More Projects"
+                    projects={more_projects}
+                />
             </Grid>
         </Grid>
     </Metadata>
