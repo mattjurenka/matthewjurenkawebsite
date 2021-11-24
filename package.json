@@ -15,6 +15,7 @@
     "heroku-postbuild": "gatsby build"
   },
   "dependencies": {
+    "@emotion/react": "^11.6.0",
     "@loadable/component": "^5.13.2",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -33,6 +34,7 @@
     "fs": "0.0.1-security",
     "gatsby": "^4.2.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-material-ui": "^4.1.0",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet": "^5.2.0",
     "gatsby-plugin-sitemap": "^5.2.0",

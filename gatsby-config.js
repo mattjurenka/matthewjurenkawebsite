@@ -20,7 +20,8 @@ module.exports = {
                     "Crimson Text"
                 ],
             },
-        }, `gatsby-plugin-react-helmet`,
+        },
+        "gatsby-plugin-react-helmet",
         {
             resolve: "gatsby-plugin-sitemap",
             options: {
@@ -50,6 +51,7 @@ module.exports = {
                     }
                 },
             },
-        }
+        },
+        "gatsby-plugin-material-ui",
     ],
 }

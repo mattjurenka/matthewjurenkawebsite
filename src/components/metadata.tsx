@@ -1,4 +1,5 @@
 import {ThemeProvider} from "@material-ui/core/styles"
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
 import React from "react"
 import {Helmet} from "react-helmet"
 import theme from "../theme"
