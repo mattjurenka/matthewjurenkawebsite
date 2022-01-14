@@ -12,20 +12,20 @@ interface Experience {
 const experiences_list: Experience[] = [
     {
         title: "SolarSPELL",
-        description: "Developed and improving a webapp that manages the content \
+        description: "Developed two webapps that manage the content \
             of the SolarSPELL device, a textbook delivery system that impacts \
             100,000 community members in the developing world.",
         link: "https://solarspell.org/",
         from: "Sept 2019",
-        to: "Current"
+        to: "Jan 2022"
     },
     {
         title: "ASU American Marketing Association",
         description: "Re-designed our chapter website which led to an increase \
             of monthly views by 100%.",
         link: "https://www.amaasu.com/",
-        from: "Mar 2020",
-        to: "Current"
+        from: "Oct 2019",
+        to: "May 2021"
     },
     {
         title: "HeyMayo",

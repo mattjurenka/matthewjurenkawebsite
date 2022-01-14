@@ -25,11 +25,11 @@ export const Header = () => <>
         >
             <LinkedIn />
         </Link>
-        <Link
-            to={email}
+        <a
+            href={email}
             style={{color: "black", marginLeft: "4px"}}
         >
             <Email />
-        </Link>
+        </a>
     </Box>
 </>
