@@ -16,8 +16,11 @@ export default ({title, projects}: ProjectsProps) => <>
     </Typography>
     {projects.map(
         ([title, link, description, technologies, href]) => <>
-        <div style={{marginTop: "1em"}}>
-            <Box display="flex" flexDirection="row" flexWrap="wrap">
+        <div style={{marginTop: "2rem"}}>
+            <Box
+                display="flex" flexDirection="row"
+                flexWrap="wrap" alignItems="center"
+            >
                 <Box>
                     <Link to={link}>
                         <Typography
@@ -28,21 +31,21 @@ export default ({title, projects}: ProjectsProps) => <>
                         </Typography>
                     </Link>
                 </Box>
-                    {href !== undefined ?
-                        <Box style={{marginLeft: "1em"}}>
-                            <ExternalLink
-                                variant="subtitle1"
-                                href={href}
-                                style={{
-                                    textDecoration: "underline",
-                                    background: "white"
-                                }}>
-                                Source Code
-                            </ExternalLink>
-                        </Box> :
-                        <></>}
+            {href !== undefined ?
+                <Box style={{marginLeft: "1em"}}>
+                    <ExternalLink
+                        variant="subtitle1"
+                        href={href}
+                        style={{
+                            textDecoration: "underline",
+                            background: "white"
+                        }}>
+                        Source Code
+                    </ExternalLink>
+                </Box> :
+                <></>}
             </Box>
-            <Typography variant="body1" style={{background: "white"}}>
+            <Typography variant="body1" style={{background: "inherit"}}>
                 {description}
             </Typography>
             <Box display="flex" flexDirection="row" flexWrap="wrap">

@@ -11,16 +11,12 @@ export const intro = "I love building websites because it's hard. There are \
     morning is to find new ways to manage that complexity and discover new \
     solutions nobody has thought of before."
 
-//export const intent = "This website is intended to showcase my projects, \
-    //abilities, and experiences as a programmer, but also to organize and share \
-    //websites and tools I have found useful that others may not have heard of."
-
 export const intent = <>
     {"I am currently working as a freelance web developer. I have been making \
     websites for over 9 years now, starting as a hobbiest and moving into the \
     professional world. I have direct experience in React, Wordpress, WiX, and \
     SquareSpace, and can pick up any other platform out there. If you have a \
-    project you need help with feel free to send me an email "}
+    project you need help with, feel free to send me an email "}
     <a href={email}>here,</a>
     {" and I will get back to you within one business day."}
 </>
@@ -37,12 +33,16 @@ export const featured_projects: Project[] = [
         "https://github.com/SolarSPELL-Main/content-curation",
     ],
     [
-        "Digital Library Management System",
-        "/dlms/",
-        "Internal webapp that packages curated content into a format usable \
-            in the actual SolarSPELL device.",
-        ["TypeScript", "React", "Django", "PostgreSQL"],
-        "https://github.com/SolarSPELL-Main/solarspell-dlms",
+        "Lambda Lounge",
+        "https://lambda-lounge.pages.dev/",
+        "Mini-Blogging platform that allows users to upload code snippets and \
+            share functional programming knowledge. (Posting disabled because \
+            I am unwilling to moderate it)",
+        [
+            "Rust", "TypeScript", "MongoDB", "WebAssembly", "Actix",
+            "Cloudflare Workers", "React"
+        ],
+        "https://github.com/mattjurenka/lambda-lounge"
     ],
     [
         "Music Visualizers",
@@ -71,6 +71,14 @@ export const featured_projects: Project[] = [
 ]
 
 export const more_projects: Project[] = [
+    [
+        "Digital Library Management System",
+        "/dlms/",
+        "Internal webapp that packages curated content into a format usable \
+            in the actual SolarSPELL device.",
+        ["TypeScript", "React", "Django", "PostgreSQL"],
+        "https://github.com/SolarSPELL-Main/solarspell-dlms",
+    ],
     [
         "AMA Website Redesign 2020",
         "/ama_new_redesign/",

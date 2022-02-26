@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid, Typography, useMediaQuery } from "@material-ui/core"
+import { Grid, Typography, useMediaQuery } from "@mui/material"
 import Experiences from "../sections/Experiences"
 import Metadata from "../components/metadata"
 
@@ -22,6 +22,7 @@ export default () => {
             style={{
                 width: "100%",
                 margin: "0 auto",
+                marginBottom: "8rem",
                 paddingTop: is_md ? "16vh" : "8vh",
                 paddingLeft: is_md ? "20%" : 0,
                 paddingRight: is_md ? "20%" : 0,
@@ -47,7 +48,7 @@ export default () => {
                 <img src={"/mountains.png"} style={{
                     position: "absolute",
                     zIndex: -1,
-                    transform: "translate(-45%, -45%) scale(.5)",
+                    transform: "translate(-45%, -42.5%) scale(.5)",
                 }}/>
             </Grid>
             <Grid item xs={12} md={6}>
