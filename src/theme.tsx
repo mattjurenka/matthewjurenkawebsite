@@ -40,7 +40,11 @@ const theme = createMuiTheme({
         body1: {
             fontFamily: crimson_text,
             fontSize: 16,
-            color: "black"
+            color: "black",
+            lineHeight: "1.75rem",
+            position: "relative",
+            top: "-0.25rem",
+            textAlign: "justify",
         },
     },
     overrides: {

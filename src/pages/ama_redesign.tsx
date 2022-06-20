@@ -2,7 +2,7 @@ import React from "react";
 import WebsiteLayout from "../components/website_layout";
 
 export default () => <WebsiteLayout
-    description={"This design was made about a year ago, and holds personal \
+    description={"This design was made a while ago, and holds personal \
         significance because it shows how far my skills have progressed since.\
         I remember thinking this layout was as good as it would get, and now \
         I can easily pick out a million little ways it could be improved. \

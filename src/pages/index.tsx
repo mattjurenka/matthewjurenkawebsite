@@ -10,9 +10,11 @@ import Projects from "../sections/Projects"
 
 
 export default () => {
+    const is_xs = useMediaQuery(theme.breakpoints.up("xs"))
     const is_sm = useMediaQuery(theme.breakpoints.up("sm"))
     const is_md = useMediaQuery(theme.breakpoints.up("md"))
     const is_lg = useMediaQuery(theme.breakpoints.up("lg"))
+    const is_xl = useMediaQuery(theme.breakpoints.up("xl"))
 
     return <Metadata
         title={"Home | Matthew Jurenka"}
@@ -22,7 +24,7 @@ export default () => {
             flexGrow: 1,
             margin: "0 auto",
             marginBottom: "8rem",
-            paddingTop: is_sm ? "16vh" : "8vh",
+            paddingTop: is_sm ? "20vh" : "12vh",
             paddingLeft: is_lg ? "20%" : is_sm ? "10%" : "2rem",
             paddingRight: is_lg ? "20%" : is_sm ? "10%" : "2rem",
             overflow: "hidden",
@@ -40,26 +42,32 @@ export default () => {
                 //}}
                 spacing={8}
             >
-                <Grid item xs={12}>
+                <Grid item xs={12} style={{marginBottom: is_sm ? "2vh" : "4vh"}}>
                     <Header />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} style={{position: "relative"}}>
                     <Typography variant="body1">
                         {intro}
                     </Typography>
-                    <Typography variant="body1" style={{marginTop: "1em"}}>
+                    <Typography variant="body1" style={{marginTop: "2rem"}}>
                         {intent}
                     </Typography>
+                    <img src={"/mountains.png"} style={{
+                        position: is_md ? "absolute" : "initial",
+                        right: 0,
+                        zIndex: -1,
+                        marginTop: "4rem",
+                        transform: is_lg ? "translate(0%, 0%)" : "",
+                        width: is_lg ? "43vw" : "100%",
+                    }}/>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Experiences />
                 </Grid>
-                <Grid item xs={6} style={{position: "relative", zIndex: -1}}> 
-                    <img src={"/mountains.png"} style={{
-                        position: "absolute",
-                        zIndex: -1,
-                        transform: "translate(-45%, -42.5%) scale(.5)",
-                    }}/>
+                <Grid item xs={6} style={{
+                    zIndex: -1,
+                    height: "0px",
+                }}> 
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Projects
@@ -68,7 +76,7 @@ export default () => {
                     />
                 </Grid>
                 <Grid item xs={12} md={6} style={{
-                    marginTop: is_md ? "-32em" : "initial"
+                    marginTop: is_md ? "calc(-100rem + 40vw)" : "initial"
                 }}>
                     <Projects
                         title="More Projects"

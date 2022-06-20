@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from "react"
-import { useQueryParam } from "gatsby-query-params";
+import { useQueryParams } from "use-query-params";
 import { Button, capitalize, Grid, Typography } from "@material-ui/core";
 import download from "downloadjs";
 import { useUpdateEffect } from "../hooks";
@@ -27,15 +27,18 @@ const VizualizerGenerator = (props: {
 }) => {
     const { script_cdns, start_rendering, name } = props
 
+    const [params] = useQueryParams({});
+
     const query_params = vizualizations_dict.specific[name].url_params
         .concat(vizualizations_dict.default_params)
         .reduce((acc, param_info) => {
             acc[param_info.name] = param_info.type === "range" ?
                 (parsed_raw => Number.isNaN(parsed_raw) ?
                     param_info.default :
-                    parsed_raw)
-                    (Number.parseInt(useQueryParam(param_info.name, param_info.default))) :
-                useQueryParam(param_info.name, param_info.default)
+                    parsed_raw)(Number.parseInt(
+                        params[param_info.name] || param_info.default
+                    )) :
+                params[param_info.name] || param_info.default
             return acc
         }, {} as query_params)
 

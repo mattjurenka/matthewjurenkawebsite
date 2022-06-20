@@ -22,7 +22,7 @@ export default ({title, projects}: ProjectsProps) => <>
                 flexWrap="wrap" alignItems="center"
             >
                 <Box>
-                    <Link to={link}>
+                    <Link to={link} style={{textDecorationColor: "black"}}>
                         <Typography
                             variant="h4"
                             style={{background: "white"}}
@@ -45,13 +45,13 @@ export default ({title, projects}: ProjectsProps) => <>
                 </Box> :
                 <></>}
             </Box>
-            <Typography variant="body1" style={{background: "inherit"}}>
+            <Typography variant="body1" style={{background: "inherit", marginTop: "0.5rem"}}>
                 {description}
             </Typography>
             <Box display="flex" flexDirection="row" flexWrap="wrap">
                 {technologies.map(tech => <Chip
                     label={tech}
-                    style={{marginRight: ".5em", marginTop: ".5em"}}
+                    style={{marginRight: "1rem", marginTop: "1rem"}}
                 />)}
             </Box>
         </div>

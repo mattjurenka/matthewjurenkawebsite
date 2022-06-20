@@ -11,21 +11,24 @@ interface Experience {
 
 const experiences_list: Experience[] = [
     {
+        title: "Amazon",
+        description: "Spearheading transcript upload and auto-generation \
+            service for Seller University, an onboarding program that \
+            supports the millions of annual new sellers who build businesses \
+            on-top of amazon.com, increasing accessibility and ease-of-use.",
+        link: "https://amazon.com/",
+        from: "May 2022",
+        to: "PRESENT"
+    },
+    {
         title: "SolarSPELL",
-        description: "Developed two webapps that manage the content \
-            of the SolarSPELL device, a textbook delivery system that impacts \
-            100,000 community members in the developing world.",
+        description: "Impacted 97,497 students and educators through continued \
+            development of the SolarSPELL device, a textbook delivery system \
+            providing textbooks to more than 395 off-grid schools in 9 \
+            countries in the developing world.",
         link: "https://solarspell.org/",
         from: "Sept 2019",
         to: "Jan 2022"
-    },
-    {
-        title: "ASU American Marketing Association",
-        description: "Re-designed our chapter website which led to an increase \
-            of monthly views by 100%.",
-        link: "https://www.amaasu.com/",
-        from: "Oct 2019",
-        to: "May 2021"
     },
     {
         title: "HeyMayo",
@@ -40,9 +43,8 @@ const experiences_list: Experience[] = [
 export default () => {
     return <>
         <Typography variant="h3">Experiences</Typography>
-        <div style={{marginBottom: "2vh"}} />
         {experiences_list.map((experience, idx) => <div
-            key={idx} style={{marginTop: "2vh"}}
+            key={idx} style={{marginTop: "2rem"}}
         >
             <Box display="flex">
                 <Link
@@ -58,7 +60,7 @@ export default () => {
                     {`${experience.from} — ${experience.to}`}
                 </Typography>
             </Box>
-            <Typography variant="body1">
+            <Typography variant="body1" style={{marginTop: "0.5rem"}}>
                 {experience.description}
             </Typography>
         </div>)}

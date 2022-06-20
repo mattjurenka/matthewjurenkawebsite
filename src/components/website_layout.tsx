@@ -5,10 +5,10 @@ import Metadata from "./metadata"
 interface website_layout_props {
     title: string,
     since: string,
-    link: string,
+    link?: string,
     description: string,
     img_href: string,
-    link_href: string
+    link_href?: string
 }
 
 const WebsiteLayout = (props: website_layout_props) => {
@@ -23,7 +23,7 @@ const WebsiteLayout = (props: website_layout_props) => {
                         {props.title}
                     </Typography>
                     <Box display="flex">
-                        <Link
+                        {props.link ? <Link
                             href={props.link_href}
                             variant="h4"
                             color="inherit"
@@ -31,7 +31,7 @@ const WebsiteLayout = (props: website_layout_props) => {
                             style={{marginRight: "1em"}}
                         >
                             {props.link}
-                        </Link>
+                        </Link> : <></>}
                         <Typography variant="subtitle1" style={{marginBottom: "2em"}}>
                             {props.since}
                         </Typography>

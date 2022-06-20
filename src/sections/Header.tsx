@@ -9,27 +9,27 @@ export const Header = () => <>
     <Typography variant="h1">
         Matthew Jurenka
     </Typography>
-    <Typography variant="h2">
-        Web Developer
+    <Typography variant="h2" style={{marginTop: "0.5rem"}}>
+        Freelance Fullstack Engineer
     </Typography>
-    <Box display="flex">
+    <Box display="flex" style={{marginTop: "0.5rem"}}>
         <Link
             to={github}
             style={{color: "black"}}
         >
-            <GitHub />
+            <GitHub style={{marginTop: "0.25rem", height: "1.5rem", width: "1.5rem"}} />
         </Link>
         <Link
             to={linkedin}
-            style={{color: "black", marginLeft: "4px"}}
+            style={{color: "black", marginLeft: "0.5rem"}}
         >
-            <LinkedIn />
+            <LinkedIn style={{height: "2rem", width: "2rem"}} />
         </Link>
         <a
             href={email}
-            style={{color: "black", marginLeft: "4px"}}
+            style={{color: "black", marginLeft: "0.5rem"}}
         >
-            <Email />
+            <Email style={{height: "2rem", width: "2rem"}} />
         </a>
     </Box>
 </>
