@@ -58,7 +58,7 @@ export const featured_projects: Project[] = [
     ],
     [
         "Lambda Lounge",
-        "https://lambda-lounge.pages.dev/",
+        "https://lambdalounge.net/",
         "Mini-Blogging platform that allows users to upload code snippets and \
             share functional programming knowledge. (Posting disabled because \
             I am unwilling to moderate it)",
