@@ -54,6 +54,9 @@ module.exports = {
         },
         "gatsby-plugin-material-ui",
         "gatsby-plugin-emotion",
-        "gatsby-plugin-use-query-params"
+        "gatsby-plugin-use-query-params",
+	"gatsby-plugin-styled-components",
+	"styled-components",
+	"babel-plugin-styled-components"
     ],
 }
