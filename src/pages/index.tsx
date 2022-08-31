@@ -76,13 +76,18 @@ export default () => {
                     />
                 </Grid>
                 <Grid item xs={12} md={6} style={{
-                    marginTop: is_md ? "calc(-100rem + 40vw)" : "initial"
+                    marginTop: is_md ? "calc(-90rem + 40vw)" : "initial"
                 }}>
                     <Projects
                         title="More Projects"
                         projects={more_projects}
                     />
                 </Grid>
+                <Grid item xs={12} md={6}>
+		    <img src="/jurenkaheadshot.jpg" style={{
+		    	maxWidth: "100%",
+		    }}/>
+		</Grid>
             </Grid>
         </Box>
     </Metadata>

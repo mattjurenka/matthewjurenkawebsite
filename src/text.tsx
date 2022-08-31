@@ -12,11 +12,11 @@ export const intro = "I love programming because it's hard. There are \
     solutions nobody has thought of before."
 
 export const intent = <>
-    {"I am currently working at Amazon and am looking to take on new clients \
-        this coming fall. I have been programming for over 9 years now, starting as \
-        a hobbiest and moving into the \ professional world. I have worked with \
-        most popular frameworks, and can pick up any other platform out there. If you have a \
-    project you need help with, feel free to send me an email "}
+    {"My current specialty is blockchain and cryptocurrency projects, whether \
+    that be creating tokens, smart contracts, project websites, or anything\
+    else you may need to make your project a success. I have worked with \
+    most popular frameworks, and can pick up any other platform out there. If \
+    you have a project you need help with, feel free to send me an email "}
     <a href={email}>here,</a>
     {" and I will get back to you within two business days."}
 </>
@@ -24,11 +24,21 @@ export const intent = <>
 
 export const featured_projects: Project[] = [
     [
+        "MayhemHeroes",
+        "https://forallsecure.com/mayhem-heroes",
+        <>{"Earned roughly"} <bold>$31,000</bold> {"through a hackathon by integrating a software \
+            testing tool with"} <bold>36</bold> {"open-source repositories totaling over"} <bold>28,725</bold>
+            {" stars on GitHub. This led to the discovery of"} <bold>5</bold> {"potential Zero-Day \
+            Vulnerabilities."}</>,
+        ["Rust", "Docker", "Go", "Github Actions", "Fuzzing"],
+        undefined
+    ],
+    [
         "Content Curation Webapp",
         "/contentcuration/",
-        "I led a team of three to build a website to handle \
-            at least 100,000 content items and 10 concurrent members \
-            of the  SolarSPELL content curation team.",
+        <>{"I led a team of three to build a website to handle \
+            at least"} <bold>100,000</bold> {"content items and"} <bold>10</bold>
+	    {" concurrent members of the  SolarSPELL content curation team."}</>,
         [
             "TypeScript", "React", "Django", "PostgreSQL", "Redux", "RxJS",
             "OAuth", "Babel"
@@ -47,16 +57,6 @@ export const featured_projects: Project[] = [
         undefined
     ],
     [
-        "MayhemHeroes",
-        "https://forallsecure.com/mayhem-heroes",
-        "Earned around $31,000 through a hackathon by integrating a software \
-            testing tool with 36 open-source repositories totaling over 28,725 \
-            stars on GitHub. This led to the discovery of 5 potential Zero-Day \
-            Vulnerabilities.",
-        ["Rust", "Docker", "Go", "Github Actions", "Fuzzing"],
-        undefined
-    ],
-    [
         "Lambda Lounge",
         "https://lambdalounge.net/",
         "Mini-Blogging platform that allows users to upload code snippets and \
@@ -68,6 +68,9 @@ export const featured_projects: Project[] = [
         ],
         "https://github.com/mattjurenka/lambda-lounge"
     ],
+]
+
+export const more_projects: Project[] = [
     [
         "VanaLabs",
         "https://www.vanalabs.com/",
@@ -77,9 +80,15 @@ export const featured_projects: Project[] = [
         ["SquareSpace", "Google Analytics", "Hotjar"],
         undefined
     ],
-]
-
-export const more_projects: Project[] = [
+    [
+        "Music Visualizers",
+        "/visualizations/",
+        "Collection of music visualizers that operate completely in the \
+            browser, creating downloadable video programatically.",
+        ["TypeScript", "React", "P5"],
+        "https://github.com/mattjurenka/matthewjurenkawebsite/tree/master/"
+            + "src/pages/visualizations"
+    ],
     [
         "Digital Library Management System",
         "/dlms/",
@@ -95,15 +104,6 @@ export const more_projects: Project[] = [
             posts for Instagram.",
         ["TypeScript", "MongoDB", "Node.js", "Express"],
         "https://github.com/mattjurenka/mayoinstagram"
-    ],
-    [
-        "Music Visualizers",
-        "/visualizations/",
-        "Collection of music visualizers that operate completely in the \
-            browser, creating downloadable video programatically.",
-        ["TypeScript", "React", "P5"],
-        "https://github.com/mattjurenka/matthewjurenkawebsite/tree/master/"
-            + "src/pages/visualizations"
     ],
     [
         "AMA Website Redesign 2020",
@@ -135,5 +135,5 @@ export const more_projects: Project[] = [
         "Original Redesign of ASU's American Marketing Association's website.",
         ["WiX"],
         undefined
-    ]
+    ],
 ]

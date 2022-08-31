@@ -18,14 +18,14 @@ const experiences_list: Experience[] = [
             on-top of amazon.com, increasing accessibility and ease-of-use.",
         link: "https://amazon.com/",
         from: "May 2022",
-        to: "PRESENT"
+        to: "Aug 2022"
     },
     {
         title: "SolarSPELL",
-        description: "Impacted 97,497 students and educators through continued \
+        description: <>{"Impacted "} <bold>97,497</bold> {" students and educators through continued \
             development of the SolarSPELL device, a textbook delivery system \
-            providing textbooks to more than 395 off-grid schools in 9 \
-            countries in the developing world.",
+            providing textbooks to more than "} <bold>395</bold> {" off-grid schools in "} <bold>9</bold>
+            {"countries in the developing world."}</>,
         link: "https://solarspell.org/",
         from: "Sept 2019",
         to: "Jan 2022"
