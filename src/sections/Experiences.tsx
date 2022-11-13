@@ -11,6 +11,15 @@ interface Experience {
 
 const experiences_list: Experience[] = [
     {
+    	title: "Core Protect",
+	description: "Co-Founded a Web3 security company around a product that \
+	    helps users screen their transactions for scams and unsafe smart \
+	    contracts.",
+	link: "https://coreprotect.io/",
+	from: "October 2022",
+    	to: "PRESENT",
+    },
+    {
         title: "Amazon",
         description: "Spearheading transcript upload and auto-generation \
             service for Seller University, an onboarding program that \
@@ -22,27 +31,19 @@ const experiences_list: Experience[] = [
     },
     {
         title: "SolarSPELL",
-        description: <>{"Impacted "} <bold>97,497</bold> {" students and educators through continued \
+        description: <>{"Led a team of 3 to impact "} <bold>97,497</bold> {" students and educators through continued \
             development of the SolarSPELL device, a textbook delivery system \
             providing textbooks to more than "} <bold>395</bold> {" off-grid schools in "} <bold>9</bold>
-            {"countries in the developing world."}</>,
+            {" countries in the developing world."}</>,
         link: "https://solarspell.org/",
         from: "Sept 2019",
         to: "Jan 2022"
-    },
-    {
-        title: "HeyMayo",
-        description: "Integrated Firebase and Google Maps APIs to create a \
-            dashboard used to visualize posts from all across the world.",
-        link: "https://www.heymayo.com/",
-        from: "Aug 2019",
-        to: "Feb 2020"
     },
 ]
 
 export default () => {
     return <>
-        <Typography variant="h3">Experiences</Typography>
+        <Typography variant="h3">Recent Experiences</Typography>
         {experiences_list.map((experience, idx) => <div
             key={idx} style={{marginTop: "2rem"}}
         >
